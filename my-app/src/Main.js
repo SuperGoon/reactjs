@@ -23,6 +23,24 @@ function Content(props) {
   )
 }
 
+// const listContent = {
+//   img1: {
+//     imgLink: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgolBdeaXdt7hZ4G28YiA8shOCg4jkBg08uA&usqp=CAU",
+//     textImage: "This is a wider card with supporting text below as a natural lead-in to additional content.",
+//     time: "About 9 minutes ago"
+//   },
+//   img2: {
+//     imgLink: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgolBdeaXdt7hZ4G28YiA8shOCg4jkBg08uA&usqp=CAU",
+//     textImage: "This is a wider card with supporting text below as a natural lead-in to additional content.",
+//     time: "About 9 minutes ago"
+//   },
+//   img3: {
+//     imgLink: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgolBdeaXdt7hZ4G28YiA8shOCg4jkBg08uA&usqp=CAU",
+//     textImage: "This is a wider card with supporting text below as a natural lead-in to additional content.",
+//     time: "About 9 minutes ago"
+//   }
+// }
+
 function Main() {
   return (
     <div>

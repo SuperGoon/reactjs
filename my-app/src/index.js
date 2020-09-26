@@ -12,11 +12,11 @@ ReactDOM.render (
   <Header />,
   document.getElementById('header')
   )
-  ReactDOM.render (
+ReactDOM.render (
       <Jumbotron />,
       document.getElementById('jumbotron')
   )
-  ReactDOM.render (
+ReactDOM.render (
     <Main />,
     document.getElementById('content')
 )
