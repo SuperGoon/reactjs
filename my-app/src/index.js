@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './Header';
@@ -6,7 +6,6 @@ import Jumbotron from './Jumbotron';
 import Main from './Main';
 import Footer from './Footer';
 import * as serviceWorker from './serviceWorker';
-
 
 ReactDOM.render (
   <Header />,

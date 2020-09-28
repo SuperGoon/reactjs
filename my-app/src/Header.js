@@ -1,8 +1,9 @@
 import React from 'react';
+import './App.css';
 
-function Header(props) {
+function Header() {
     return (
-      <div>
+      <div className="fixed">
             <div className="collapse bg-dark" id="navbarHeader">
               <div className="container">
                 <div className="row">

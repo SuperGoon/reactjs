@@ -2,7 +2,7 @@ import React from 'react'
 
 function Jumbotron(){
     return (
-        <section className="jumbotron text-center">
+        <section className="jumbotron text-center mt-5">
         <div className="container">
           <h1>Album example</h1>
           <p className="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
