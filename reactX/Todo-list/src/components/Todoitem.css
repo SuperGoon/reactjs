@@ -1,0 +1,42 @@
+.TodoItem {
+    font-family: 'helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 2rem;
+    color: #4d4d4d;
+}
+
+.TodoItem-done {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.light {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.light .circle {
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.3;
+    margin: 10px;
+}
+
+.light .circle.active {
+    opacity: 1;
+}
+
+.light .circle.red {
+    background-color: red;
+}
+
+.light .circle.green {
+    background-color: green;
+}
+
+.light .circle.yellow {
+    background-color: yellow;
+}
