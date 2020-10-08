@@ -1,11 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import { TodoItem, Example } from './components/Todoitem.js'
 // import Example from './components/Testhook.js'
 
 function App() {
-  let arrayTodolist = [
+  const [ arrayTodoList, setArrayTodoList] = useState([
     {
       title: "Đi chơi",
       isDone: true,
@@ -18,19 +17,25 @@ function App() {
       title: "Đi chợ",
       isDone: false
     }
-  ];
+  ])
+
+  function onClickItem(_index){
+    const newArray = arrayTodoList.map((ele, index) => index === _index ? {...ele, isDone: !ele.isDone} : ele)
+    setArrayTodoList(newArray)
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {arrayTodoList.length < 1 && "Nothing here"}
+
         {
-          arrayTodolist.length < 1 ? "Nothing here" : arrayTodolist.map(ele =>
-          <TodoItem items={ele}
-          />)
+          arrayTodoList.length && arrayTodoList.map((ele, index) =>(
+            <TodoItem items={ele} onClick={() => onClickItem(index)} key={index}/>)
+          )
         }
+        <div className="example">
           <Example />
-      </header>
+        </div>
     </div>
   );
 }

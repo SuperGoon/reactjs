@@ -10,14 +10,14 @@ export function Example() {
     const intervalRef = useRef();
 
     useEffect(() => {
-    const id = setInterval(() => {
-        setColor(getColor(color), color)
-    }, 1000);
-    intervalRef.current = id;
-    return () => {
-      clearInterval(intervalRef.current);
-    };
-  });
+        const id = setInterval(() => {
+            setColor(getColor(color), color)
+        }, 1000);
+        intervalRef.current = id;
+        return () => {
+            clearInterval(intervalRef.current);
+        };
+    });
 
     function getColor(color){
         switch(color){
@@ -51,11 +51,10 @@ export function Example() {
 }
 
 export function TodoItem(props){
-    let className = 'TodoItem';
-    const { items } = props;
-    if(items.isDone) className += ' TodoItem-done';
+    const { items, onClick } = props;
+
     return (
-    <div className={className}>
+    <div onClick={onClick} className={classNames('TodoItem', {'TodoItem-done' : items.isDone})}>
         <p>{items.title}</p>
     </div>
     )
