@@ -8,7 +8,7 @@ import TodoForm from "./components/TodoForm";
 
 function App() {
     const [todoList, setTodoList] = useState(() => {
-        const innitTodo = localStorage.getItem("todo_list") || [
+        const innitTodo = JSON.parse(localStorage.getItem("new-array")) || [
             { id: 1, title: "Đi chơi", isDone: true },
             { id: 2, title: "Đi chợ", isDone: true },
             { id: 3, title: "Đi ăn", isDone: false },
@@ -22,7 +22,7 @@ function App() {
             ele.id === todo.id ? { ...ele, isDone: !ele.isDone } : ele
         );
         setTodoList(newTodoList);
-        localStorage.setItem("todo_list", newTodoList);
+        localStorage.setItem("new-array", JSON.stringify(newTodoList));
     }
 
     function handleTodoFormSubmit(formValues) {
@@ -31,7 +31,7 @@ function App() {
         const newTodoList = [...todoList];
         newTodoList.push(newTodo);
         setTodoList(newTodoList);
-        localStorage.setItem("todo_list", newTodoList);
+        localStorage.setItem("new-array", JSON.stringify(newTodoList));
     }
 
     return (
@@ -40,10 +40,14 @@ function App() {
                 <Example />
                 <ColorBox />
             </div>
-            <h1>React Hook - TodoList</h1>
 
-            <TodoForm onSubmit={handleTodoFormSubmit} />
-            <TodoList todos={todoList} onTodoClick={handleTodoClick} />
+            <div className="todo">
+                <TodoForm onSubmit={handleTodoFormSubmit} />
+
+                {todoList.map((todo) => (
+                    <TodoList todos={todo} onTodoClick={handleTodoClick} />
+                ))}
+            </div>
         </div>
     );
 }

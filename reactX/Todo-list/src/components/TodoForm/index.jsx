@@ -29,9 +29,18 @@ function TodoForm(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={value} onChange={handleValueChange} />
-        </form>
+        <div>
+            <h1>React Hook - TodoList</h1>
+            <form onSubmit={handleSubmit}>
+                <input
+                    className="todo-input"
+                    type="text"
+                    value={value}
+                    onChange={handleValueChange}
+                    placeholder="Nhập Todo"
+                />
+            </form>
+        </div>
     );
 }
 
