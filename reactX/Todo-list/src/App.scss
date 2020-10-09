@@ -1,0 +1,55 @@
+html {
+    font-size: 62.5%;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.App {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d9dde4;
+    font-size: 2rem;
+}
+
+.todo-list {
+    font-family: "helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    color: red;
+}
+
+.example {
+    width: 100%;
+    min-height: 300px;
+    background-color: #d9dde4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #4d4d4d;
+    .color-box {
+        $box-size: 300px;
+        width: $box-size;
+        height: $box-size;
+        border-radius: 20px;
+        transition: all 0.5s ease-in-out 0s;
+        cursor: pointer;
+    }
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

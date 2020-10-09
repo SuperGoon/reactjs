@@ -1,43 +1,51 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
-import { TodoItem, Example } from './components/Todoitem.js'
-// import Example from './components/Testhook.js'
+import React, { useState } from "react";
+import "./reset.css";
+import "./App.scss";
+import ColorBox from "./components/ColorBox";
+import TodoList from "./components/TodoList";
+import Example from "./components/Example";
+import TodoForm from "./components/TodoForm";
 
 function App() {
-  const [ arrayTodoList, setArrayTodoList] = useState([
-    {
-      title: "Đi chơi",
-      isDone: true,
-    },
-    {
-      title: "Đi học",
-      isDone: true     
-    },
-    {
-      title: "Đi chợ",
-      isDone: false
+    const [todoList, setTodoList] = useState(() => {
+        const innitTodo = localStorage.getItem("todo_list") || [
+            { id: 1, title: "Đi chơi", isDone: true },
+            { id: 2, title: "Đi chợ", isDone: true },
+            { id: 3, title: "Đi ăn", isDone: false },
+        ];
+        return innitTodo;
+    });
+
+    function handleTodoClick(todo) {
+        console.log(todo);
+        const newTodoList = todoList.map((ele) =>
+            ele.id === todo.id ? { ...ele, isDone: !ele.isDone } : ele
+        );
+        setTodoList(newTodoList);
+        localStorage.setItem("todo_list", newTodoList);
     }
-  ])
 
-  function onClickItem(_index){
-    const newArray = arrayTodoList.map((ele, index) => index === _index ? {...ele, isDone: !ele.isDone} : ele)
-    setArrayTodoList(newArray)
-  }
+    function handleTodoFormSubmit(formValues) {
+        console.log("Form: ", formValues);
+        const newTodo = { id: todoList.length + 1, ...formValues };
+        const newTodoList = [...todoList];
+        newTodoList.push(newTodo);
+        setTodoList(newTodoList);
+        localStorage.setItem("todo_list", newTodoList);
+    }
 
-  return (
-    <div className="App">
-        {arrayTodoList.length < 1 && "Nothing here"}
+    return (
+        <div className="App">
+            <div className="example">
+                <Example />
+                <ColorBox />
+            </div>
+            <h1>React Hook - TodoList</h1>
 
-        {
-          arrayTodoList.length && arrayTodoList.map((ele, index) =>(
-            <TodoItem items={ele} onClick={() => onClickItem(index)} key={index}/>)
-          )
-        }
-        <div className="example">
-          <Example />
+            <TodoForm onSubmit={handleTodoFormSubmit} />
+            <TodoList todos={todoList} onTodoClick={handleTodoClick} />
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;
