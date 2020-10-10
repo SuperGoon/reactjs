@@ -7,7 +7,6 @@ h1 {
     margin: 20px 0;
 }
 
-$iconSize: 30px;
 .App {
     margin: 0;
     padding-bottom: 100px;
@@ -15,7 +14,7 @@ $iconSize: 30px;
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background-color: #b2bec3;
+    background-color: #ebebeb;
     font-size: 2rem;
 }
 
@@ -39,12 +38,13 @@ $iconSize: 30px;
 
 .todo {
     margin: auto;
+    padding: 10px;
     width: 500px;
     min-height: 300px;
-    border: 2px solid rgb(161, 161, 161);
+    border: 1px solid rgb(161, 161, 161);
     border-radius: 10px;
-    background-image: linear-gradient(45deg, #f79f1f, #a3cb38);
-    box-shadow: 0 5px 4px 2px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(45deg, #82ccdd, #60a3bc);
+    box-shadow: 0 5px 4px 6px rgba(0, 0, 0, 0.1);
     &-list {
         font-family: "helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 2rem;
@@ -56,7 +56,7 @@ $iconSize: 30px;
             padding: 10px;
             flex: 1;
             text-align: left;
-            color: #6f1e51;
+            color: #fa983a;
             border-bottom: 1px solid rgb(170, 170, 170);
             &:last-child {
                 border-bottom: none;
@@ -67,19 +67,8 @@ $iconSize: 30px;
             color: #313131;
             opacity: 0.5;
         }
-        &-check {
-            margin-left: 10px;
-            width: $iconSize;
-            height: $iconSize;
-            opacity: 0.8;
-            &:hover {
-                opacity: 1;
-            }
-        }
-        &-delete {
-            margin-right: 10px;
-            width: $iconSize;
-            height: $iconSize;
+        &>img {
+            margin: auto 10px;
             opacity: 0.8;
             &:hover {
                 opacity: 1;
@@ -90,6 +79,8 @@ $iconSize: 30px;
         margin: auto;
         width: 80%;
         height: 30px;
+        border: 1px solid #fff;
+        border-radius: 3px;
         font-size: 2rem;
         opacity: 0.7;
         outline: none;

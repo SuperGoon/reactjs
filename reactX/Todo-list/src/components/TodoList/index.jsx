@@ -16,7 +16,7 @@ TodoList.defaultProps = {
 };
 
 function TodoList(props) {
-    const { todos, onTodoClick } = props;
+    const { todos, onTodoClick, onTodoDelete } = props;
 
     let url = checkIcon;
     if (todos.isDone) {
@@ -29,12 +29,19 @@ function TodoList(props) {
         }
     }
 
+    function handleDelete(todo) {
+        if (onTodoClick) {
+            onTodoDelete(todo);
+        }
+    }
+
     return (
         <div className="todo-list">
             <img
                 src={url}
                 onClick={() => handleClick(todos)}
-                className="todo-list-check"
+                width={32}
+                height={32}
             />
             <p
                 className={classNames("todo-list-item", {
@@ -44,7 +51,12 @@ function TodoList(props) {
             >
                 {todos.title}
             </p>
-            <img src={deleteIcon} width={32} className="todo-list-delete" />
+            <img
+                src={deleteIcon}
+                onClick={() => handleDelete(todos)}
+                width={32}
+                height={32}
+            />
         </div>
     );
 }

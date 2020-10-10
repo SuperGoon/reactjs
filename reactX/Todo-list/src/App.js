@@ -25,6 +25,15 @@ function App() {
         localStorage.setItem("new-array", JSON.stringify(newTodoList));
     }
 
+    function handleTodoDelete(todo) {
+        const index = todoList.findIndex((x) => x.id === todo.id);
+        if (index < 0) return;
+        const newTodoList = [...todoList];
+        newTodoList.splice(index, 1);
+        setTodoList(newTodoList);
+        localStorage.setItem("new-array", JSON.stringify(newTodoList));
+    }
+
     function handleTodoFormSubmit(formValues) {
         console.log("Form: ", formValues);
         const newTodo = { id: todoList.length + 1, ...formValues };
@@ -45,7 +54,11 @@ function App() {
                 <TodoForm onSubmit={handleTodoFormSubmit} />
 
                 {todoList.map((todo) => (
-                    <TodoList todos={todo} onTodoClick={handleTodoClick} />
+                    <TodoList
+                        todos={todo}
+                        onTodoClick={handleTodoClick}
+                        onTodoDelete={handleTodoDelete}
+                    />
                 ))}
             </div>
         </div>
