@@ -9,7 +9,7 @@ function Example() {
     useEffect(() => {
         const id = setInterval(() => {
             setColor(getColor(color), color);
-        }, 1000);
+        }, 500);
         intervalRef.current = id;
         return () => {
             clearInterval(intervalRef.current);
@@ -19,9 +19,9 @@ function Example() {
     function getColor(color) {
         switch (color) {
             case "RED":
-                return "GREEN";
-            case "GREEN":
                 return "YELLOW";
+            case "YELLOW":
+                return "GREEN";
             default:
                 return "RED";
         }
@@ -36,13 +36,13 @@ function Example() {
                     })}
                 />
                 <div
-                    className={classNames("circle", "green", {
-                        active: color === "GREEN",
+                    className={classNames("circle", "yellow", {
+                        active: color === "YELLOW",
                     })}
                 />
                 <div
-                    className={classNames("circle", "yellow", {
-                        active: color === "YELLOW",
+                    className={classNames("circle", "green", {
+                        active: color === "GREEN",
                     })}
                 />
             </div>

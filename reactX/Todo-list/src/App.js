@@ -47,7 +47,7 @@ function App() {
         <div className="App">
             <div className="example">
                 <Example />
-                <ColorBox />
+                {/* <ColorBox /> */}
             </div>
 
             <div className="todo">

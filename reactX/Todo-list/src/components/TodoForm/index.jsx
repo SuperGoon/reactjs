@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import down from "../../image/down.svg";
 
 TodoForm.propTypes = {
     onSubmit: PropTypes.func,
@@ -13,16 +14,15 @@ function TodoForm(props) {
     const [value, setValue] = useState("");
 
     function handleValueChange(e) {
-        console.log(e.target.value);
-        setValue(e.target.value);
+        let text = e.target.value;
+        setValue(text);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         if (!onSubmit) return;
-
         const formValues = {
-            title: value,
+            title: value.trim(),
         };
         onSubmit(formValues);
         setValue("");
@@ -31,15 +31,18 @@ function TodoForm(props) {
     return (
         <div>
             <h1>React Hook - TodoList</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    className="todo-input"
-                    type="text"
-                    value={value}
-                    onChange={handleValueChange}
-                    placeholder="Nhập Todo"
-                />
-            </form>
+
+            <div className="todo-form">
+                <img src={down} width={30} />
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={value}
+                        onChange={handleValueChange}
+                        placeholder="Add new Todo"
+                    />
+                </form>
+            </div>
         </div>
     );
 }
