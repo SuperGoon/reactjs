@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./reset.css";
 import "./App.scss";
-import ColorBox from "./components/ColorBox";
+// import ColorBox from "./components/ColorBox";
 import TodoList from "./components/TodoList";
 import Example from "./components/Example";
 import TodoForm from "./components/TodoForm";
@@ -19,7 +19,7 @@ function App() {
     function handleTodoClick(todo) {
         console.log(todo);
         const newTodoList = todoList.map((ele) =>
-            ele.id === todo.id ? { ...ele, isDone: !ele.isDone } : ele
+            ele.id === todo.id ? {...ele, isDone: !ele.isDone } : ele
         );
         setTodoList(newTodoList);
         localStorage.setItem("new-array", JSON.stringify(newTodoList));
@@ -43,25 +43,26 @@ function App() {
         localStorage.setItem("new-array", JSON.stringify(newTodoList));
     }
 
-    return (
-        <div className="App">
-            <div className="example">
-                <Example />
-                {/* <ColorBox /> */}
-            </div>
-
-            <div className="todo">
-                <TodoForm onSubmit={handleTodoFormSubmit} />
-
-                {todoList.map((todo) => (
-                    <TodoList
-                        todos={todo}
-                        onTodoClick={handleTodoClick}
-                        onTodoDelete={handleTodoDelete}
-                    />
-                ))}
-            </div>
-        </div>
+    return ( <
+        div className = "App" >
+        <
+        div className = "example" >
+        <
+        Example / > { /* <ColorBox /> */ } { " " } <
+        /div> <
+        div className = "todo" >
+        <
+        TodoForm onSubmit = { handleTodoFormSubmit }
+        /> {
+            todoList.map((todo) => ( <
+                TodoList todos = { todo }
+                onTodoClick = { handleTodoClick }
+                onTodoDelete = { handleTodoDelete }
+                />
+            ))
+        } { " " } <
+        /div>{" "} <
+        /div>
     );
 }
 

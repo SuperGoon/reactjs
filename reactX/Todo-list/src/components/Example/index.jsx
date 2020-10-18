@@ -47,7 +47,7 @@ function Example() {
                 />
             </div>
             {/* <button onClick={() => setColor('green')}>
-                Bấm vào tôi
+                Click me!
             </button> */}
         </div>
     );
