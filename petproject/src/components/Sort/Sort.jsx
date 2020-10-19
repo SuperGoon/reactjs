@@ -14,20 +14,20 @@ function Sort() {
                     Sort by <span className="caret" />
                 </button>
                 <div className="dropdown-menu">
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/">
                         Action
                     </a>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/">
                         Another action
                     </a>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/">
                         Something else here
                     </a>
                     <div role="separator" className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/">
                         Separated link
                     </a>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/">
                         Separated link
                     </a>
                 </div>

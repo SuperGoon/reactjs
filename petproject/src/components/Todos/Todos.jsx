@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 Todos.propTypes = {
     todos: PropTypes.array,
@@ -11,53 +12,45 @@ Todos.defaultProps = {
 };
 
 function Todos(props) {
-    const { todos, index, onTodoDelete } = props;
-    // const [item, setItem] = useState();
+    const { todos, onTodoDelete } = props;
+    console.log(todos);
 
-    let classNameBadge = "";
-    let nameBadge = "";
-    switch (todos.level) {
-        case 0:
-            classNameBadge = "badge badge-danger";
-            nameBadge = "Important";
-            break;
-        case 1:
-            classNameBadge = "badge badge-warning";
-            nameBadge = "Normal";
-            break;
-        default:
-            classNameBadge = "badge badge-secondary";
-            nameBadge = "Not Important";
-            break;
-    }
-
-    function handleClickDelete(todos) {
+    function handleClickDelete(todo) {
         if (onTodoDelete) {
-            onTodoDelete(todos);
+            onTodoDelete(todo);
         }
     }
 
-    return (
-        <tr>
-            <td className="text-center">{index}</td>
-            <td>{todos.title}</td>
+    return todos.map((todo, index) => (
+        <tr key={todo.id}>
+            <td className="text-center">{index + 1}</td>
+            <td>{todo.title}</td>
             <td className="text-center">
-                <span className={classNameBadge}>{nameBadge}</span>
+                <span
+                    className={classNames(
+                        "badge",
+                        { "badge-secondary": todo.level === "Not Important" },
+                        { "badge-danger": todo.level === "Important" },
+                        { "badge-warning": todo.level === "Normal" }
+                    )}
+                >
+                    {todo.level}
+                </span>
             </td>
-            <td>
+            <td className="d-flex justify-content-around">
                 <button type="button" className="btn btn-warning btn-sm">
                     Edit
                 </button>
                 <button
                     type="button"
                     className="btn btn-danger btn-sm"
-                    onClick={() => handleClickDelete(todos)}
+                    onClick={() => handleClickDelete(todo)}
                 >
                     Delete
                 </button>
             </td>
         </tr>
-    );
+    ));
 }
 
 export default Todos;

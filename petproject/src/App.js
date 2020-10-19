@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import "core-js";
+
 import Title from "./components/Title/Title";
 import Search from "./components/Search/Search";
 import Sort from "./components/Sort/Sort";
@@ -8,12 +11,23 @@ import Todos from "./components/Todos/Todos";
 function App() {
     const [todoList, setTodoList] = useState(() => {
         const innitTodo = JSON.parse(localStorage.getItem("new-array")) || [
-            { id: 1, title: "Đi chơi", level: 1 },
-            { id: 2, title: "Đi chợ", level: 2 },
-            { id: 3, title: "Đi ăn", level: 3 },
+            { id: uuidv4(), title: "Đi chơi", level: "Important" },
+            { id: uuidv4(), title: "Đi chơi", level: "Normal" },
+            { id: uuidv4(), title: "Đi chơi", level: "Not Important" },
         ];
         return innitTodo;
     });
+
+    console.log("todoList", todoList);
+
+    function handleTodoFormSubmit(formValues) {
+        console.log("Form: ", formValues);
+        const newTodo = { id: uuidv4(), ...formValues };
+        const newTodoList = [...todoList];
+        newTodoList.push(newTodo);
+        setTodoList(newTodoList);
+        localStorage.setItem("new-array", JSON.stringify(newTodoList));
+    }
 
     function handleTodoDelete(todo) {
         const index = todoList.findIndex((x) => x.id === todo.id);
@@ -24,14 +38,6 @@ function App() {
         localStorage.setItem("new-array", JSON.stringify(newTodoList));
     }
 
-    function handleTodoFormSubmit(formValues) {
-        console.log("Form: ", formValues);
-        const newTodo = { id: todoList.length + 1, ...formValues };
-        const newTodoList = [...todoList];
-        newTodoList.push(newTodo);
-        setTodoList(newTodoList);
-        localStorage.setItem("new-array", JSON.stringify(newTodoList));
-    }
     return (
         <div className="container">
             <Title />
@@ -80,13 +86,10 @@ function App() {
                         </tr>
                     </thead>
                     <tbody>
-                        {todoList.map((todo, index) => (
-                            <Todos
-                                index={index + 1}
-                                todos={todo}
-                                onTodoDelete={handleTodoDelete}
-                            />
-                        ))}
+                        <Todos
+                            todos={todoList}
+                            onTodoDelete={handleTodoDelete}
+                        />
                     </tbody>
                 </table>
             </div>
