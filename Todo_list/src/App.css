@@ -1,9 +1,16 @@
+html {
+    font-family: Roboto, "Helvetica Neue", Arial, Helvet;
+    font-weight: 700;
+}
+
 .dropdown-item {
     cursor: pointer;
 }
 
 .is-done {
     text-decoration: line-through;
+    opacity: 0.8;
+    font-style: italic;
 }
 
 .hidden-button {
