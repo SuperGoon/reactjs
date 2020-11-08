@@ -1,0 +1,16 @@
+.inputText input {
+    outline: none;
+    background-color: transparent;
+    border: 0;
+    cursor: default;
+    flex: 1;
+    width: 100%;
+}
+
+.inputText input:focus {
+    outline: none;
+}
+
+.inputText:hover input {
+    background-color: #ececec;
+}

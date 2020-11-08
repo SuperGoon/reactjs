@@ -1,0 +1,11 @@
+.dropdown-item {
+    cursor: pointer;
+}
+
+.is-done {
+    text-decoration: line-through;
+}
+
+.hidden-button {
+    display: none;
+}
