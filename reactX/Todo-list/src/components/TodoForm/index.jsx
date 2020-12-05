@@ -37,11 +37,7 @@ function TodoForm(props) {
             <h1>React Hook - TodoList</h1>
 
             <div className="todo-form">
-                <img
-                    src={down}
-                    width={30}
-                    // onClick={handleOnClickForm}
-                />
+                <img src={down} width={30} />
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"

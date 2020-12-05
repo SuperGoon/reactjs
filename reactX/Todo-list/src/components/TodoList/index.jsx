@@ -43,6 +43,7 @@ function TodoList(props) {
                 width={32}
                 height={32}
             />
+            <i class="fas fa-check-circle"></i>
             <p
                 className={classNames("todo-list-item", {
                     "todo-list-done": todos.isDone,
